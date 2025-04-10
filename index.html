@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-         <title>Web Page</title>
-        <link rel="stylesheet" href="styles.css">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="main">
-        <div class="narvbar">
-            <div class="icon">
-            <h2 class="logo">LIBRARY</h2>
-                
+  <div class="overlay">
+    <h1>Library Management System</h1>
+    <nav class="nav-bar">
+      <button onclick="alert('Login as User')">User Login</button>
+      <button onclick="alert('Login as Admin')">Admin Login</button>
+    </nav>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search by title, author, or genre..." />
     </div>
+    <div class="book-list" id="bookList"></div>
+  </div>
 
+  <script src="script.js"></script>
 </body>
 </html>
+
