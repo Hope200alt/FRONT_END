@@ -1,0 +1,28 @@
+@import './styles/global.css';
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure footer stays at bottom */
+main {
+  flex: 1;
+}
+
+/* Add some spacing for the content */
+.MuiContainer-root {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+/* Style links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
