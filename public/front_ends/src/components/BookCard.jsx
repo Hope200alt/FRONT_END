@@ -8,8 +8,9 @@ const BookCard = ({ book }) => {
       <CardMedia
         component="img"
         height="140"
-        image={book.cover_image || 'https://via.placeholder.com/150'}
+        image={book.image_url || 'https://via.placeholder.com/300x200?text=No+cover'}
         alt={book.title}
+        sx={{ objectFit: 'cover' }}
       />
       <CardContent sx={{ flexGrow: 1 }}>
         <Typography gutterBottom variant="h5" component="div">

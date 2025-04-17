@@ -19,8 +19,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router>
-        <AuthProvider>
+      <AuthProvider> {/* AuthProvider wraps Router to ensure access to auth context */}
+        <Router basename="/librarywebapp"> {/* Add basename if deploying to GitHub Pages subpath */}
           <NavBar />
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -43,10 +43,12 @@ function App() {
                 </AdminRoute>
               }
             />
+            {/* Optional: Add a 404 catch-all route */}
+            <Route path="*" element={<div>404 Not Found</div>} />
           </Routes>
           <Footer />
-        </AuthProvider>
-      </Router>
+        </Router>
+      </AuthProvider>
     </ThemeProvider>
   );
 }

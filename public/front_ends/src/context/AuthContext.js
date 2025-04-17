@@ -1,6 +1,5 @@
-// AuthContext.js
+// src/context/AuthContext.js
 import { createContext, useContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
 
 const AuthContext = createContext();
@@ -8,7 +7,6 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
   // Load stored user from localStorage on initial load.
   useEffect(() => {
@@ -30,12 +28,11 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       return {
         success: false,
-        message: error.response?.data?.message || 'Login failed'
+        message: error.response?.data?.message || 'Login failed',
       };
     }
   };
 
-  // Updated register to optionally send an adminCode.
   const register = async (username, password, email, role = 'user', adminCode = '') => {
     try {
       await api.post('/auth/register', { username, password, email, role, adminCode });
@@ -43,7 +40,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       return {
         success: false,
-        message: error.response?.data?.message || 'Registration failed'
+        message: error.response?.data?.message || 'Registration failed',
       };
     }
   };
@@ -52,7 +49,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     setUser(null);
-    navigate('/');
+    window.location.href = '/'; // 👈 redirect using vanilla JS instead of useNavigate
   };
 
   return (
